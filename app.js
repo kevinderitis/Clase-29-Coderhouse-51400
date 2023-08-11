@@ -3,10 +3,13 @@ import mongoose from 'mongoose';
 import userRouter from './src/routes/users.router.js';
 import businessRouter from './src/routes/business.router.js';
 import orderRouter from './src/routes/orders.router.js';
+import cors from 'cors';
 
 const app = express();
 
 const connection = mongoose.connect('mongodb+srv://coderhouse:coder123456@coderhouse.z88zdi9.mongodb.net/codereats?retryWrites=true&w=majority')
+
+app.use(cors({origin: 'http://127.0.0.1:5500', methods: ['GET', 'POST', 'PUT']}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
